@@ -1,4 +1,3 @@
-Mounika G (Software Trainee), [29-11-2024 18:14]
 # Time Zone App
 
 A simple Time Zone App to display and manage clocks for various time zones. The app allows users to add multiple clocks, toggle between 12-hour and 24-hour formats, and switch between dark and light modes. Clocks and preferences are stored using localStorage, so they persist even after a page reload.
