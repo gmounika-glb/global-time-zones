@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family:'monoscope', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -13,6 +13,7 @@ body.light-mode {
 }
 
 header {
+    font-family: "Crimson Text", serif;
     position: fixed;
     top: 0;
     width: 100%;
@@ -30,7 +31,7 @@ header {
 }
 
 h1.title-heading {
-    width: 30%;
+    width: 40%;
     margin-left: 10%;
 }
 
@@ -39,6 +40,7 @@ h1.title-heading {
     align-items: center;
     justify-content: center;
     margin-left: 15%;
+    gap: 5px;
 }
 
 .navbar-content {
@@ -54,6 +56,7 @@ h1.title-heading {
     justify-content: center;
     align-items: center;
     margin-left: 18%;
+    gap: 5px;
 }
 
 .navbar-content.collapsed {
@@ -126,6 +129,13 @@ h1.title-heading {
         justify-content: center;
         align-content: center;
     }
+    .add-timezone-clocks{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content:center ;
+        align-items: flex-end;
+    }
 
     h1.title-heading {
         width: 100%;
@@ -152,6 +162,13 @@ h1.title-heading {
 
     .navbar-content {
         display: none;
+    }
+    .add-timezone-clocks{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content:center ;
+        align-items: flex-end;
     }
 
     .navbar-content.collapsed {
@@ -214,13 +231,19 @@ main.hidden {
 }
 
 .clock-header {
+    font-family: "Merienda", cursive;
     font-weight: bold;
     font-size: 18px;
     margin-bottom: 10px;
-    color: #1E3A8A; 
+    background-color: #1E3A8A; 
+    color: rgb(255, 255, 255);
+    padding: 3px;
+    border-radius: 20px;
+
 }
 
 .clock-time {
+    font-family: "Orbitron", serif;
     font-size: 24px;
     font-weight: bold;
     margin: 10px 0;
@@ -314,7 +337,8 @@ body.dark-mode .navbar .button:hover {
 }
 
 body.dark-mode .clock-header {
-    color: #34D399; 
+    color: #188f65; 
+    background-color: #ffffff;
 }
 body.dark-mode footer{
     background-color: #313c4a;
