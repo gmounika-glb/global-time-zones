@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Time Zones</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <h1 class="title-heading">Global Time Zone</h1>
+            <button class="hamburger" id="hamburger-toggle">
+                <i class='bx bx-menu'></i>
+            </button>
+            <div class="navbar-content">
+                <div class="add-timezone-clocks">
+                    <select id="timezone-select" class="timezone-select"></select>
+                    <button class="button" id="add-clock" data-value="add">Add Clock</button>
+                </div>
+                <div class="buttons">
+                    <div class="button dark-mode-btn dark-mode" id="dark-Mode-toggle">
+                        <i id="dark-mode-toggle" class='bx bx-sun'></i>
+                    </div>
+                    <div class="button info" id="info-icon" data-value="i" aria-label="View Shortcut Keys">
+                        <i class="bx bx-info-circle"></i>
+                    </div>
+                    <div class="button reset" id="reset" data-value="reset">
+                        <i class='bx bx-reset'></i>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Info Section -->
+    <div class="info-container" id="info-container">
+        <h3>Keyboard Shortcuts</h3>
+        <ul>
+            <li><strong>S/s :</strong> Open the timezone dropdown</li>
+            <li><strong>Enter :</strong> Add the clock</li>
+            <li><strong>R/r :</strong> Delete all clocks</li>
+            <li><strong>M/m :</strong> Theme Toggle</li>
+            <li><strong>I/i :</strong> Info</li>
+        </ul>
+    </div>
+
+    <main id="clock-container"></main>
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>© 2024 Global Time Zone App. All rights reserved. | <a href="#">mounika G</a></p>
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.34/builds/moment-timezone-with-data.js"></script>
+    <script src="userScript.js"></script>
+</body>
+
+</html>
