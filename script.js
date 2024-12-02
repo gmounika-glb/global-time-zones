@@ -143,21 +143,21 @@ const toggleDarkMode = () => {
 toggleMode.addEventListener('click', toggleDarkMode);
 // keyboard events
 document.addEventListener('keydown', event => {
+  // For Command key (macOS)
   const isCommandPressed = event.metaKey;
+  // For Control key (Windows/Linux)
   const isCtrlPressed = event.ctrlKey;
+  // For Shift key
   const isShiftPressed = event.shiftKey;
+  // Get the key that was pressed
   const key = event.key.toLowerCase();
 
+  // Reset clocks if Command/Ctrl + R is pressed
   if ((isCommandPressed || isCtrlPressed || isShiftPressed) && key === 'r') {
     resetClockContainer.click();
   } else if (
     (isCommandPressed || isCtrlPressed || isShiftPressed) &&
     key === 's'
-  ) {
-    $(timezoneSelect).select2('open');
-  } else if (
-    (isCommandPressed || isCtrlPressed || isShiftPressed) &&
-    key === 'i'
   ) {
     $(timezoneSelect).select2('open');
   } else if (key === 'enter') {
@@ -168,6 +168,11 @@ document.addEventListener('keydown', event => {
     key === 'm'
   ) {
     toggleDarkMode();
+  } else if (
+    (isCommandPressed || isCtrlPressed || isShiftPressed) &&
+    key === 'i'
+  ) {
+    $('#info-icon').click();
   }
 });
 
