@@ -115,7 +115,7 @@ addClockBtn.addEventListener('click', () => {
     alert('You have already added this clock.');
   } else {
     if (timezone) {
-      clocks.push({timezone, format: '24-hour'});
+      clocks.unshift({timezone, format: '24-hour'});
       localStorage.setItem('clocks', JSON.stringify(clocks));
       updateClocks();
     } else {
