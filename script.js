@@ -166,7 +166,7 @@ document.addEventListener('keydown', event => {
     resetClockContainer.click();
   } else if (
     (isCommandPressed || isCtrlPressed || isShiftPressed) &&
-    key === 's'
+    key === 'x'
   ) {
     $(timezoneSelect).select2('open');
   } else if (key === 'enter') {
