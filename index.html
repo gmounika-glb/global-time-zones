@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Time Zones</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Merienda:wght@300..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <header>
         <nav class="navbar">
@@ -25,47 +21,47 @@
             <div class="navbar-content">
                 <div class="add-timezone-clocks">
                     <select id="timezone-select" class="timezone-select"></select>
-                    <button class="button" id="add-clock" data-value="add">Add Clock</button>
+                    <button class="button tooltip" id="add-clock" data-value="add"><span class="tooltiptext">Current selected timezone clock will add</span>Add Clock</button>
                 </div>
                 <div class="buttons">
-                    <div class="button dark-mode-btn dark-mode" id="dark-Mode-toggle">
+                    <div class="button tooltip dark-mode-btn dark-mode" id="dark-Mode-toggle">
+                        <span class="tooltiptext">Toggle mode</span>
                         <i id="dark-mode-toggle" class='bx bx-sun'></i>
                     </div>
-                    <div class="button info" id="info-icon" data-value="i" aria-label="View Shortcut Keys">
+                    <div class="button tooltip info" id="info-icon" data-value="i" aria-label="View Shortcut Keys">
+                        <span class="tooltiptext">Get info</span>
                         <i class="bx bx-info-circle"></i>
                     </div>
-                    <div class="button reset" id="reset" data-value="reset">
+                    <div class="button tooltip reset" id="reset" data-value="reset">
+                        <span class="tooltiptext">Reset all clocks</span>
                         <i class='bx bx-reset'></i>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
-
     <!-- Info Section -->
     <div class="info-container" id="info-container">
         <h3>Keyboard Shortcuts</h3>
         <ul>
-            <li><strong>cmd+s, ctrl+s, shift+s :</strong> Open the timezone dropdown</li>
+            <li><strong>ctrl+s, cmd+s, shift+s :</strong> Open the timezone dropdown</li>
             <li><strong>Enter :</strong> Add the clock</li>
-            <li><strong>cmd+r, ctrl+r, shift+r :</strong> Delete all clocks</li>
-            <li><strong>cmd+m, ctrl+m, shift+m :</strong> Theme Toggle</li>
-            <li><strong>cmd+i, ctrl+i, shift+i :</strong> Info</li>
+            <li><strong>ctrl+r, cmd+r, shift+r :</strong> Delete all clocks</li>
+            <li><strong>ctrl+m, cmd+m, shift+m :</strong> Theme Toggle</li>
+            <li><strong>ctrl+, cmd+i, shift+i :</strong> Info</li>
         </ul>
-        
     </div>
-
-    <main id="clock-container"></main>
+    <div id="clock-container"></div>
     <!-- Footer Section -->
     <footer class="footer">
         <p>© 2024-2025 Global Time Zone App. All rights reserved. | Created by<a href="https://github.com/gmounika-glb">Mounika G</a></p>
     </footer>
-
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.34/builds/moment-timezone-with-data.js"></script>
     <script src="script.js"></script>
 </body>
-
 </html>
