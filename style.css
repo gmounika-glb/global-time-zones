@@ -123,8 +123,9 @@ h1.title-heading {
         justify-content: center;
         align-content: center;
     }
-    .tooltip:hover .tooltiptext {
+    .tooltip .tooltiptext {
         visibility: hidden;
+        opacity: 0;
       }
     h1.title-heading {
         width: 100%;
@@ -156,8 +157,9 @@ h1.title-heading {
         align-content: flex-start;
         flex-direction: column;
     } 
-    .tooltip:hover .tooltiptext {
+    .tooltip .tooltiptext {
         visibility: hidden;
+        opacity: 0;
       }
     h1.title-heading {
         width: 100%;
