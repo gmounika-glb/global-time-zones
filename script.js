@@ -121,7 +121,7 @@ addClockBtn.addEventListener('click', () => {
   const clocks = JSON.parse(localStorage.getItem('clocks')) || [];
 
   if (clocks.some(clock => clock.timezone === timezone)) {
-    alert('You have already added this clock.');
+    showCustomAlert('You have already added this clock.');
   } else {
     if (timezone) {
       clocks.unshift({timezone, format: '24-hour'});
