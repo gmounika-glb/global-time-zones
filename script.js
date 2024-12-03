@@ -56,7 +56,12 @@ const updateClocks = () => {
   clocks.forEach(({timezone, format = '24-hour'}, index) => {
     const clockCard = document.createElement('div');
     clockCard.classList.add('clock-card');
+    // Important for drag-and-drop tracking
+    clockCard.setAttribute('data-index', index);
 
+    if (format === '12-hour') {
+      clockCard.classList.add('ampm-theme');
+    }
     const header = document.createElement('div');
     header.classList.add('clock-header');
     header.textContent = timezone;
@@ -81,6 +86,12 @@ const updateClocks = () => {
       clocks[index].format =
         clocks[index].format === '24-hour' ? '12-hour' : '24-hour';
       localStorage.setItem('clocks', JSON.stringify(clocks));
+
+      if (clocks[index].format === '12-hour') {
+        clockCard.classList.add('ampm-theme');
+      } else {
+        clockCard.classList.remove('ampm-theme');
+      }
       updateClocks();
     });
 
@@ -89,22 +100,20 @@ const updateClocks = () => {
       localStorage.setItem('clocks', JSON.stringify(clocks));
       updateClocks();
     });
-
     clockCard.appendChild(header);
     clockCard.appendChild(timeDisplay);
     clockCard.appendChild(dateDisplay);
     clockCard.appendChild(gmtDisplay);
     clockCard.appendChild(toggleFormatBtn);
     clockCard.appendChild(deleteBtn);
-
     clockContainer.appendChild(clockCard);
 
     updateClockTime(timezone, format, timeDisplay, dateDisplay, gmtDisplay);
-
     setInterval(() => {
       updateClockTime(timezone, format, timeDisplay, dateDisplay, gmtDisplay);
     }, 1000);
   });
+  initializeSortable();
 };
 
 addClockBtn.addEventListener('click', () => {
@@ -185,20 +194,73 @@ hamburger.addEventListener('click', () => {
   navbarContent.classList.toggle('expanded');
 });
 
-// Info button toggle functionality (using jQuery)
-$(document).ready(function () {
-  // Toggle the info container when the info button is clicked
-  $('#info-icon').click(function () {
-    $('#info-container').toggleClass('show');
+// Function to show a custom alert
+const showCustomAlert = message => {
+  const alertContainer = document.createElement('div');
+  alertContainer.classList.add('custom-alert');
+
+  const alertIcon = document.createElement('i');
+  alertIcon.classList.add('bx', 'bx-info-circle', 'alert-icon');
+
+  const alertMessage = document.createElement('div');
+  alertMessage.classList.add('alert-message');
+  alertMessage.textContent = message;
+
+  const closeButton = document.createElement('button');
+  closeButton.classList.add('close-alert');
+  closeButton.innerHTML = '&times;';
+  closeButton.addEventListener('click', () => {
+    alertContainer.remove(); // Remove the alert on close
   });
 
-  // Close info container when clicking anywhere outside of it
+  alertContainer.appendChild(alertIcon);
+  alertContainer.appendChild(alertMessage);
+  alertContainer.appendChild(closeButton);
+
+  document.body.appendChild(alertContainer);
+
+  setTimeout(() => {
+    alertContainer.remove();
+  }, 3000);
+};
+
+// Function to initialize SortableJS
+const initializeSortable = () => {
+  new Sortable(clockContainer, {
+    animation: 150,
+    onEnd: evt => {
+      // Rearrange the clocks array based on the new order
+      const reorderedClocks = Array.from(clockContainer.children).map(child => {
+        const index = child.getAttribute('data-index');
+        return JSON.parse(localStorage.getItem('clocks'))[index];
+      });
+
+      // Update localStorage and re-render clocks
+      localStorage.setItem('clocks', JSON.stringify(reorderedClocks));
+      updateClocks();
+    },
+  });
+};
+
+// Info button toggle functionality (using jQuery)
+$(document).ready(function () {
+  $('#info-icon').click(function () {
+    $('#info-container').toggleClass('show');
+    if ($('#info-container').hasClass('show')) {
+      setTimeout(() => {
+        $('#clock-container').addClass('blur');
+      });
+    } else {
+      $('#clock-container').removeClass('blur');
+    }
+  });
+
   $(document).click(function (e) {
     if (!$(e.target).closest('#info-container, #info-icon').length) {
       $('#info-container').removeClass('show');
+      $('#clock-container').removeClass('blur');
     }
   });
 });
-
 populateTimeZones();
 updateClocks();
