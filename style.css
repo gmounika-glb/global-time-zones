@@ -474,22 +474,29 @@ body.dark-mode footer{
     background-color: #d82525de; 
     color: #fff;
   }
-  /* Highlight the dragged item */
-.clock-card.sortable-chosen {
-    opacity: 0.7;
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    cursor: grabbing;
-  }
-
-  .clock-card.sortable-ghost {
-    opacity: 0.4;
-    background-color: #e0e0e0;
-    border: 2px dashed #ccc;
-    height: 100px; 
-    box-sizing: border-box;
+  /* Drag and drop */
+  .clock-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    padding: 15px;
   }
   
   .clock-card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .clock-card:active {
+    transform: scale(0.95); /* Feedback for touch interactions */
+  }
+  
+  .sortable-ghost {
+    opacity: 0.6;
+    background: #f0f0f0;
+    border: 1px dashed #999;
   }
