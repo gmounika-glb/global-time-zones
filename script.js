@@ -229,15 +229,11 @@ const initializeSortable = () => {
   new Sortable(clockContainer, {
     animation: 150,
     onEnd: evt => {
-      // Rearrange the clocks array based on the new order
       const reorderedClocks = Array.from(clockContainer.children).map(child => {
         const index = child.getAttribute('data-index');
         return JSON.parse(localStorage.getItem('clocks'))[index];
       });
-
-      // Update localStorage and re-render clocks
       localStorage.setItem('clocks', JSON.stringify(reorderedClocks));
-      updateClocks();
     },
   });
 };
